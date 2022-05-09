@@ -16,7 +16,6 @@ class MailAddressForm extends StatelessWidget {
         // ユーザーログイン情報モデル取得
         final userlLoginModel = Provider.of<UserLoginModel>(context, listen: false);
         userlLoginModel.email = value;
-        debugPrint("[email]" +userlLoginModel.email);
       }
     );
   }
