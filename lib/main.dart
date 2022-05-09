@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:chat_app/my_firebase_option.dart';
 import 'package:chat_app/login/ui/login_page.dart';
 
-void main() {
+void main() async {
+
+  // 初期化処理を追加
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: MyFirebaseOption.apiKey,
+      projectId: MyFirebaseOption.projectId,
+      messagingSenderId: MyFirebaseOption.messagingSenderId,
+      appId: MyFirebaseOption.appId,
+      ),
+    );
+
   runApp(const ChatApp());
 }
 
