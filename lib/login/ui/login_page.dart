@@ -4,11 +4,13 @@ import 'package:chat_app/login/model/user_login_model.dart';
 import 'package:chat_app/login/component/mail_address_form.dart';
 import 'package:chat_app/login/component/password_form.dart';
 import 'package:chat_app/login/component/add_user_button.dart';
+import 'package:chat_app/login/component/login_button.dart';
 
 /// chatログインページ
 /// 
 /// 以下の機能をおこなうためのページ
 /// ・新規ユーザ登録
+/// ・ログイン
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -49,7 +51,13 @@ class LoginPage extends StatelessWidget {
                     const SizedBox(
                       width: double.infinity,
                       child: AddUserButton()
-                    )
+                    ),
+                    const SizedBox(height: 8),
+                    // ログインボタン
+                    const SizedBox(
+                      width: double.infinity,
+                      child: LoginButton()
+                    ),                    
                   ],
                 ),
               )
