@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:chat_app/chat/ui/add_post_page.dart';
-import 'package:chat_app/login/ui/login_page.dart';
+import 'package:chat_app/chat/component/logout_button.dart';
 
 /// チャット画面用Widget
 class ChatPage extends StatelessWidget {
@@ -15,18 +15,9 @@ class ChatPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('チャット'),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.close),
-            onPressed: () async {
-              // ログイン画面に遷移＋チャット画面を破棄
-              await Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) {
-                  return const LoginPage();
-                }),
-              );
-            },
-          ),
+        actions: const <Widget>[
+          // ログアウトボタン
+          LogoutButton()
         ],
       ),
       body: Center(
