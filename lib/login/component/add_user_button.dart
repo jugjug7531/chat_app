@@ -21,7 +21,7 @@ class AddUserButton extends StatelessWidget {
         try {
           // メール&パスワードでユーザー登録
           final FirebaseAuth auth = FirebaseAuth.instance;
-          final result = await auth.createUserWithEmailAndPassword(
+          await auth.createUserWithEmailAndPassword(
             email: userlLoginModel.email,
             password: userlLoginModel.password,
           );
@@ -29,7 +29,7 @@ class AddUserButton extends StatelessWidget {
           // チャット画面に遷移＋ログイン画面を破棄
           await Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) {
-              return ChatPage(user: result.user!);
+              return const ChatPage();
             }),
           );
         } catch (e) {

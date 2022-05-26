@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
+import 'package:chat_app/login/model/user_login_model.dart';
 import 'package:chat_app/my_firebase_option.dart';
 import 'package:chat_app/login/ui/login_page.dart';
+import 'package:chat_app/post/model/post_message_text_model.dart';
 
 void main() async {
 
@@ -16,7 +19,21 @@ void main() async {
       ),
     );
 
-  runApp(const ChatApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<UserLoginModel>(
+          create: (context) => UserLoginModel(),
+        ),
+        ChangeNotifierProvider<PostMessageTextModel>(
+          create: (context) => PostMessageTextModel(),
+        ),
+      ],
+      child: const MaterialApp(
+        home: ChatApp(),
+      ),
+    ),
+  );
 }
 
 class ChatApp extends StatelessWidget {

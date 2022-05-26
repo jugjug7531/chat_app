@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:chat_app/chat/ui/add_post_page.dart';
+import 'package:provider/provider.dart';
 import 'package:chat_app/chat/component/logout_button.dart';
+import 'package:chat_app/chat/component/add_post_page_transition_button.dart';
+import 'package:chat_app/chat/component/add_post_list.dart';
+import 'package:chat_app/login/model/user_login_model.dart';
+import 'package:chat_app/post/model/post_message_text_model.dart';
 
-/// チャット画面用Widget
+/// チャット一覧ページ
+/// 
+/// 投稿されたメッセージを一覧表示するページ
 class ChatPage extends StatelessWidget {
-  const ChatPage({Key? key, required this.user}) : super(key: key);
-
-  // ユーザー情報
-  final User user;
+  const ChatPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,21 +22,24 @@ class ChatPage extends StatelessWidget {
           LogoutButton()
         ],
       ),
-      body: Center(
-        // ユーザー情報を表示
-        child: Text('ログイン情報：${user.email}'),
+      body: Column(
+        children: [
+          // ユーザー情報を表示
+          Container(
+            padding: const EdgeInsets.all(8),
+            child: Consumer<UserLoginModel>(
+              builder: (context, userLoginModel, _) => Text('ログイン情報：${userLoginModel.email.toString()}'),
+            )
+          ),
+          // 投稿メッセージ一覧
+          Expanded(
+            child: Consumer<PostMessageTextModel>(
+              builder: (context, postMessageTextModel, _) => const AddPostList()
+            )
+          )
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () async {
-          // 投稿画面に遷移
-          await Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) {
-              return const AddPostPage();
-            }),
-          );
-        },
-      ),
+      floatingActionButton: const AddPostPageTransitionButton(),
     );
   }
 }

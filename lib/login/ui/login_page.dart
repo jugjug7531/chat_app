@@ -26,41 +26,38 @@ class LoginPage extends StatelessWidget {
           child:Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ChangeNotifierProvider(
-                create: (BuildContext context) => UserLoginModel(),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:  <Widget>[
-                    // メールアドレス入力フォーム
-                    const MailAddressForm(),
-                    // パスワード入力フォーム
-                    const PasswordForm(),
-                    // エラーメッセージ
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      child: Consumer<UserLoginModel>(
-                        builder: (context, userLoginModel, _) => Text(
-                        userLoginModel.errorMsg,
-                        style: const TextStyle(
-                            color: Colors.red
-                          ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children:  <Widget>[
+                  // メールアドレス入力フォーム
+                  const MailAddressForm(),
+                  // パスワード入力フォーム
+                  const PasswordForm(),
+                  // エラーメッセージ
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Consumer<UserLoginModel>(
+                      builder: (context, userLoginModel, _) => Text(
+                      userLoginModel.errorMsg,
+                      style: const TextStyle(
+                          color: Colors.red
                         ),
-                      )
-                    ),
-                    // 新規ユーザ登録ボタン
-                    const SizedBox(
-                      width: double.infinity,
-                      child: AddUserButton()
-                    ),
-                    const SizedBox(height: 8),
-                    // ログインボタン
-                    const SizedBox(
-                      width: double.infinity,
-                      child: LoginButton()
-                    ),                    
-                  ],
-                ),
-              )
+                      ),
+                    )
+                  ),
+                  // 新規ユーザ登録ボタン
+                  const SizedBox(
+                    width: double.infinity,
+                    child: AddUserButton()
+                  ),
+                  const SizedBox(height: 8),
+                  // ログインボタン
+                  const SizedBox(
+                    width: double.infinity,
+                    child: LoginButton()
+                  ),                    
+                ],
+              ),
             ]
           )
         )

@@ -21,7 +21,7 @@ class LoginButton extends StatelessWidget {
         try {
           // メール/パスワードでログイン
           final FirebaseAuth auth = FirebaseAuth.instance;
-          final result = await auth.signInWithEmailAndPassword(
+          await auth.signInWithEmailAndPassword(
             email: userlLoginModel.email,
             password: userlLoginModel.password,
           );
@@ -29,7 +29,7 @@ class LoginButton extends StatelessWidget {
           // チャット画面に遷移＋ログイン画面を破棄
           await Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) {
-              return ChatPage(user: result.user!);
+              return const ChatPage();
             }),
           );
         } catch (e) {
