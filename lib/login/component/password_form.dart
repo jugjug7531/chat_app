@@ -15,8 +15,8 @@ class PasswordForm extends StatelessWidget {
       obscureText: true,
       onChanged: (String value) {
         // ユーザーログイン情報モデル取得
-        final userlLoginModel = Provider.of<UserLoginModel>(context, listen: false);
-        userlLoginModel.password = value;
+        final userLoginModel = Provider.of<UserLoginModel>(context, listen: false);
+        userLoginModel.password = value;
       }
     );
   }

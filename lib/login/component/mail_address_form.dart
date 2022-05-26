@@ -14,8 +14,8 @@ class MailAddressForm extends StatelessWidget {
       decoration: const InputDecoration(labelText: 'メールアドレス'),
       onChanged: (String value) {
         // ユーザーログイン情報モデル取得
-        final userlLoginModel = Provider.of<UserLoginModel>(context, listen: false);
-        userlLoginModel.email = value;
+        final userLoginModel = Provider.of<UserLoginModel>(context, listen: false);
+        userLoginModel.email = value;
       }
     );
   }

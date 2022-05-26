@@ -16,14 +16,14 @@ class AddUserButton extends StatelessWidget {
       child: const Text('ユーザー登録'),
       onPressed: () async {
         // ユーザーログイン情報モデル取得
-        final userlLoginModel = Provider.of<UserLoginModel>(context, listen:false);
+        final userLoginModel = Provider.of<UserLoginModel>(context, listen:false);
 
         try {
           // メール&パスワードでユーザー登録
           final FirebaseAuth auth = FirebaseAuth.instance;
           await auth.createUserWithEmailAndPassword(
-            email: userlLoginModel.email,
-            password: userlLoginModel.password,
+            email: userLoginModel.email,
+            password: userLoginModel.password,
           );
           // ユーザー登録に成功した場合
           // チャット画面に遷移＋ログイン画面を破棄
@@ -34,7 +34,7 @@ class AddUserButton extends StatelessWidget {
           );
         } catch (e) {
           // ユーザー登録に失敗した場合
-          userlLoginModel.errorMsg = "登録に失敗しました：${e.toString()}";
+          userLoginModel.errorMsg = "登録に失敗しました：${e.toString()}";
         }
       },
     );
