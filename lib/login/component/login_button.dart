@@ -12,7 +12,7 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
-    return OutlinedButton(
+    return ElevatedButton(
       child: const Text('ログイン'),
       onPressed: () async {
         // ユーザーログイン情報モデル取得

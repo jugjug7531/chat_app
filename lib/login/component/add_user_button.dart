@@ -4,16 +4,16 @@ import 'package:provider/provider.dart';
 import 'package:chat_app/chat/ui/chat_page.dart';
 import 'package:chat_app/login/model/user_login_model.dart';
 
-/// ユーザー登録ボタン
+/// 新規アカウント作成ボタン
 /// 
-/// ログイン画面で新規ユーザ登録するときに押すボタンWidget
+/// 新規アカウント作成するときに押すボタンWidget
 class AddUserButton extends StatelessWidget {
   const AddUserButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context){
     return ElevatedButton(
-      child: const Text('ユーザー登録'),
+      child: const Text('アカウント作成'),
       onPressed: () async {
         // ユーザーログイン情報モデル取得
         final userLoginModel = Provider.of<UserLoginModel>(context, listen:false);

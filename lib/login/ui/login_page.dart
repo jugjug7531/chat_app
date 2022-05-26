@@ -3,14 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:chat_app/login/model/user_login_model.dart';
 import 'package:chat_app/login/component/mail_address_form.dart';
 import 'package:chat_app/login/component/password_form.dart';
-import 'package:chat_app/login/component/add_user_button.dart';
 import 'package:chat_app/login/component/login_button.dart';
+import 'package:chat_app/login/component/signup_page_transition_button.dart';
 
 /// chatログインページ
 /// 
-/// 以下の機能をおこなうためのページ
-/// ・新規ユーザ登録
-/// ・ログイン
+/// チャットへのログインをおこなうためのページ
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -18,7 +16,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("チャット ログイン"),
+        title: const Text("ログイン"),
       ),
       body: Center(
         child: Container(
@@ -29,6 +27,12 @@ class LoginPage extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:  <Widget>[
+                  const Text(
+                    "チャット",
+                    style: TextStyle(
+                      fontSize: 48
+                    ),),
+                  const SizedBox(height: 16),
                   // メールアドレス入力フォーム
                   const MailAddressForm(),
                   // パスワード入力フォーム
@@ -45,17 +49,17 @@ class LoginPage extends StatelessWidget {
                       ),
                     )
                   ),
-                  // 新規ユーザ登録ボタン
-                  const SizedBox(
-                    width: double.infinity,
-                    child: AddUserButton()
-                  ),
-                  const SizedBox(height: 8),
                   // ログインボタン
                   const SizedBox(
                     width: double.infinity,
                     child: LoginButton()
-                  ),                    
+                  ),
+                  const SizedBox(height: 8),
+                  // 新規アカウント登録画面遷移ボタン
+                  const SizedBox(
+                    width: double.infinity,
+                    child: SignupPageTransitionButton()
+                  ),             
                 ],
               ),
             ]
