@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:chat_app/chat/component/logout_button.dart';
 import 'package:chat_app/chat/component/add_post_page_transition_button.dart';
 import 'package:chat_app/chat/component/add_post_list.dart';
+import 'package:chat_app/chat/component/user_name_text.dart';
 import 'package:chat_app/login/model/user_login_model.dart';
 import 'package:chat_app/post/model/post_message_text_model.dart';
 
@@ -28,7 +29,7 @@ class ChatPage extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8),
             child: Consumer<UserLoginModel>(
-              builder: (context, userLoginModel, _) => Text('ログイン情報：${userLoginModel.email.toString()}'),
+              builder: (context, userLoginModel, _) =>  const UserNameText()
             )
           ),
           // 投稿メッセージ一覧

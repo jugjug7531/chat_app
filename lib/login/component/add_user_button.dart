@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 import 'package:chat_app/chat/ui/chat_page.dart';
 import 'package:chat_app/login/model/user_login_model.dart';
@@ -26,6 +27,14 @@ class AddUserButton extends StatelessWidget {
             password: userLoginModel.password,
           );
           // ユーザー登録に成功した場合
+          // ユーザー情報をfirestoreに保存
+          await FirebaseFirestore.instance
+            .collection('users') // コレクションID指定
+            .doc() // ドキュメントID自動生成
+            .set({
+              'name': userLoginModel.name,
+              'email': userLoginModel.email,
+            });
           // チャット画面に遷移＋ログイン画面を破棄
           await Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) {
