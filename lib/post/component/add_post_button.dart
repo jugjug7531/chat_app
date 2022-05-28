@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:chat_app/post/model/post_message_text_model.dart';
 import 'package:chat_app/login/model/user_login_model.dart';
@@ -22,8 +23,8 @@ class AddPostButton extends StatelessWidget {
         final postMessageTextModel = Provider.of<PostMessageTextModel>(context, listen:false);
 
         // 現在の日時取得
-        final date =
-            DateTime.now().toLocal().toIso8601String(); 
+        final date = DateFormat('yyyy-MM-dd(E) HH:mm:ss')
+          .format(DateTime.now().toLocal()); 
         // 投稿メッセージ用ドキュメント作成
         await FirebaseFirestore.instance
             .collection('posts') // コレクションID指定
@@ -31,6 +32,7 @@ class AddPostButton extends StatelessWidget {
             .set({
           'text': postMessageTextModel.message,
           'email': userLoginModel.email,
+          'name': userLoginModel.name,
           'date': date
         });
         // 1つ前の画面に戻る

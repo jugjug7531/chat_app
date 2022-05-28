@@ -31,7 +31,9 @@ class AddPostList extends StatelessWidget {
               return Card(
                 child: ListTile(
                   title: Text(document['text']),
-                  subtitle: Text(document['email']),
+                  subtitle: Text(
+                      "${document['date']}  Name:${document['name']}"
+                    ),
                   // 自分の投稿メッセージの場合は削除ボタンを表示
                   trailing: document['email'] == userLoginModel.email
                       ? IconButton(
